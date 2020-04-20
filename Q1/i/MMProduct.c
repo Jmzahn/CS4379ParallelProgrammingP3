@@ -50,7 +50,7 @@ void print_inputs(){
 void print_outputs(){
     int row, col;
     if (N <= 10) {
-        printf("\nA =\n\t");
+        printf("\nC =\n\t");
         for (row = 0; row < N; row++) {
             for (col = 0; col < N; col++) {
 	            printf("%5.2f%s", C[row][col], (col < N-1) ? ", " : ";\n\t");
@@ -66,7 +66,7 @@ int main(int argc, char *argv[]){
     unsigned long long usecstart, usecstop;
     struct tms cputstart, cputstop;  /* CPU times for my processes */
 
-    srand(NULL);  /* Randomize */
+    srand(time(NULL));  /* Randomize */
 
     //read args, as MMproduct N P
     if(argc != 3){
@@ -74,8 +74,8 @@ int main(int argc, char *argv[]){
     }
     else{
         char *p, *n;
-        long convp = strtol(argv[1], &p, 10);
-        long convn = strtol(argv[2], &n, 10);
+        long convn = strtol(argv[1], &n, 10);
+        long convp = strtol(argv[2], &p, 10);
         numP = convp;
         N = convn;
         if (N > MAXN){
@@ -94,11 +94,13 @@ int main(int argc, char *argv[]){
     printf("\nStarting clock.\n");
     gettimeofday(&etstart, NULL);
     etstart2 = times(&cputstart);
-
+    int row, col, k;
     // matrix multiplication
-    for(int row = 0; row < N; row++){
-        for(int col = 0; col < N; col++){
-            for(int k = 0; k < N; k++){
+    #pragma omp parallel shared(A, B, C) private(row, col, k) num_threads(numP)
+    for(row = 0; row < N; row++){
+        for(col = 0; col < N; col++){
+            #pragma omp for schedule(static)
+            for(k = 0; k < N; k++){
                 C[row][col] += A[row][k] * B[k][col];
             }
         }
