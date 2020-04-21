@@ -94,12 +94,13 @@ int main(int argc, char *argv[]){
     printf("\nStarting clock.\n");
     gettimeofday(&etstart, NULL);
     etstart2 = times(&cputstart);
+    
     int row, col, k;
     // matrix multiplication
     #pragma omp parallel shared(A, B, C) private(row, col, k) num_threads(numP)
     for(row = 0; row < N; row++){
         for(col = 0; col < N; col++){
-            #pragma omp for schedule(static)
+            #pragma omp for schedule (static)
             for(k = 0; k < N; k++){
                 C[row][col] += A[row][k] * B[k][col];
             }
