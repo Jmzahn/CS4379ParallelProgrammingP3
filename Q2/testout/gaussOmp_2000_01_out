@@ -1,12 +1,15 @@
 
+Matrix dimension N = 2000.
+Number of threads = 1.
+
 Initializing...
 
 Starting clock.
 Stopped clock.
 
-Elapsed time = 15942.3 ms.
+Elapsed time = 16074.3 ms.
 (CPU times are accurate to the nearest 0.001 ms)
-My total CPU time for parent = 1.596 ms.
+My total CPU time for parent = 1.608 ms.
 My system CPU time for parent = 0 ms.
 My total CPU time for child processes = 0 ms.
 --------------------------------------------
