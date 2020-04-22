@@ -100,15 +100,15 @@ int main(int argc, char *argv[]){
     // LU decomposition
     #pragma omp parallel shared(A, B, X) private(row, col, k) num_threads(numP)
     #pragma omp for ordered
-    for (k = 0; k < N - 1; k++) {
-        for (row = k + 1; row < N; row++) {
+    for(k = 0; k < N; k++){
+        for(row = k + 1; row < N; row++){
             //store L
             A[row][k] /= A[k][k];
             //calc Multipliers
             B[row] -= A[row][k]*B[k];
         }
         for(row = k + 1; row < N; row++) {
-            for (col = k; col < N; col++) {
+            for (col = k + 1; col < N; col++) {
 	            A[row][col] -= A[row][k] * A[k][col];
             }
         }
