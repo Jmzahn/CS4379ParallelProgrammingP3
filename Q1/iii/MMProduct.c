@@ -85,6 +85,9 @@ int main(int argc, char *argv[]){
             numP = getMaxThreads();
         }
     }
+    /* Print parameters */
+    printf("\nMatrix dimension N = %i.\n", N);
+    printf("Number of threads = %i.\n", numP);
     /* Initialize A, B and C*/
     initialize_inputs();
     /* Print input matrices */
