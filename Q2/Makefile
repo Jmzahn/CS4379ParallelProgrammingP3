@@ -1,11 +1,15 @@
 CC = gcc
 LIB = -fopenmp
 
-prog: gaussOmp.c
+prog1: gaussOmp.c
 	$(CC) $(LIB) gaussOmp.c -o gaussOmp
 
-all: gaussOmp
+prog2: LUOmp.c
+	$(CC) $(LIB) LUOmp.c -o LUOmp
+
+all: 
 	$(CC) $(LIB) gaussOmp.c -o gaussOmp
+	$(CC) $(LIB) LUOmp.c -o LUOmp
 
 clean:
 	rm -f *.exe *.o
