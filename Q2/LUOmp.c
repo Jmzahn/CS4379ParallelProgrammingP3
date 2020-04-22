@@ -41,7 +41,7 @@ void print_inputs(){
         }
         printf("\nB =\n\t");
         for (row = 0; row < N; row++) {
-            printf("%5.2f%s", B[row], (row < N-1) ? ", " : ";\n\t");
+            printf("%5.2f%s", B[row], ";\n\t");
         }
     }
 }
@@ -51,7 +51,7 @@ void print_outputs(){
     if (N <= 10) {
         printf("\nX =\n\t");
         for (row = 0; row < N; row++) {
-            printf("%5.2f%s", X[row], (row < N-1) ? ", " : ";\n\t");
+            printf("%5.2f%s", X[row], ";\n\t");
         }
     }
 }
