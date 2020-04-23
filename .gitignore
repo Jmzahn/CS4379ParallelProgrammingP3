@@ -116,3 +116,4 @@ Q2/gaussOmp
 
 OMP_job.*
 machinefile.*
+.vscode/settings.json
