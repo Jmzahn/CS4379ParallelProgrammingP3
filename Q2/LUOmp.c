@@ -65,7 +65,7 @@ int main(int argc, char *argv[]){
 
     srand(time(NULL));  /* Randomize */
 
-    //read args, as MMproduct N P
+    //read args, as LUOmp N P
     if(argc != 3){
         return(-1);
     }
